@@ -12,3 +12,19 @@ proxy:
   port: 1080
   username:
   password:
+
+firewatch:
+  watch:
+    - # dup as many u wish
+      chat_id:
+        - any # if any all the messages match target_id in sight will be firewatched
+      target_id:
+        - any # if any all the messages in chat_id will be firewatched
+      dest_chat_id: -1000000000000 # the destination chat
+
+    # - # dup as many u wish
+    #   chat_id:
+    #     - any # if any all the messages match target_id in sight will be firewatched
+    #   target_id:
+    #     - any # if any all the messages in chat_id will be firewatched
+    #   dest_chat_id: -1000000000000 # the destination chat
