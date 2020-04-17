@@ -15,15 +15,19 @@ async def firewatch(c: Client, m: Message):
                 dst_id = (await c.get_chat(text_list[4])).id
                 checked = True
             except:
-                await m.reply("Error occurred when parse ids, check your input.")
+                await m.reply("Error occurred while parsing ids, check your input.")
             if checked:
+                counter = 0
                 all_history = c.iter_history(chat_id=chat_id, reverse=True)
                 if user_id == "any":
                     async for i in all_history:
                         if not i.service:
                             await i.forward(dst_id)
+                            counter += 1
                 else:
                     async for i in all_history:
                         if not i.service and i.from_user:
                             if i.from_user.id == user_id:
                                 await i.forward(dst_id)
+                                counter += 1
+                await m.reply("{} messages dumped successfully.".format(counter))
