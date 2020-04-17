@@ -14,6 +14,7 @@ def main():
         bot_token=CONFIG.pyrogram.bot_token,
         workers=CONFIG.pyrogram.workers,
         plugins=dict(root="firewatch"),
+        proxy=CONFIG.proxy
     )
     app.run()
 

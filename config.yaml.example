@@ -5,3 +5,10 @@ pyrogram:
   workers: 4
   updates_workers: 4
   lang_code: cn
+
+proxy:
+  enabled: false
+  hostname: 127.0.0.1
+  port: 1080
+  username:
+  password:
