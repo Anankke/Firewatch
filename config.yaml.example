@@ -4,3 +4,4 @@ pyrogram:
   bot_token: null #if null assumes user bot.
   workers: 4
   updates_workers: 4
+  lang_code: cn
