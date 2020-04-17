@@ -8,4 +8,9 @@
 
 ## Installation
 
-pip3 install -U https://github.com/pyrogram/pyrogram/archive/asyncio.zip TgCrypto
+`pip3 install -U https://github.com/pyrogram/pyrogram/archive/asyncio.zip TgCrypto`
+
+
+## Usage
+
+todo
