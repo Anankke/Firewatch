@@ -1,5 +1,5 @@
 from pyrogram import Client, Filters, Message
-from config import CONFIG, DotDict
+from config import CONFIG
 
 
 @Client.on_message(Filters.user(CONFIG.firewatch.trusted_op_id) & Filters.text, group=1)
@@ -7,7 +7,7 @@ async def firewatch(c: Client, m: Message):
     if m.text.startswith("/firewatch "):
         text_list = m.text.split(" ")
 
-        if text_list[1] == "dump":  # /firewatch dump @someone/or_it's_user_id @heipchat/or_it's_chat_id destination_id
+        if text_list[1] == "dump":  # /firewatch dump @someone/or_it's_user_id @heipchat/or_it's_chat_id dest_chat_id
             checked = False
             try:
                 chat_id = (await c.get_chat(text_list[2])).id
