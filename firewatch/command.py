@@ -7,7 +7,8 @@ async def firewatch(c: Client, m: Message):
     if m.text.startswith("/firewatch "):
         text_list = m.text.split(" ")
 
-        if text_list[1] == "dump":  # /firewatch dump @someone/or_it's_user_id @heipchat/or_it's_chat_id dest_chat_id
+        # /firewatch dump @heipchat/or_it's_chat_id @someone/or_it's_user_id dest_chat_id [optional]offset_id
+        if text_list[1] == "dump":
             chat_id = 0
             user_id = 0
             dst_id = 0
@@ -15,13 +16,19 @@ async def firewatch(c: Client, m: Message):
                 chat_id = (await c.get_chat(text_list[2])).id
                 user_id = (await c.get_users(text_list[3])).id
                 dst_id = (await c.get_chat(text_list[4])).id
+                try:
+                    offset_id = int(text_list[5])
+                except:
+                    offset_id = 0
             except:
-                await m.reply("Error occurred while parsing ids, check your input.\n"
-                              "Chat ID: {}, User ID: {}, DST ID: {}".format(chat_id, user_id, dst_id))
+                await m.reply(
+                    "Error occurred while parsing ids, check your input.\n"
+                    "Chat ID: {}, User ID: {}, DST ID: {}".format(chat_id, user_id, dst_id)
+                )
                 return
 
             counter = 0
-            all_history = c.iter_history(chat_id=chat_id, reverse=True)
+            all_history = c.iter_history(chat_id=chat_id, offset_id=offset_id, reverse=True)
             if user_id == "any":
                 async for i in all_history:
                     if not i.service:
