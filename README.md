@@ -7,11 +7,12 @@
 ## Installation
 
 ```
-pip3 install -U https://github.com/pyrogram/pyrogram/archive/asyncio.zip TgCrypto
+pip3 install -U https://github.com/pyrogram/pyrogram/archive/asyncio.zip TgCrypto PyYAML
 git clone https://github.com/Anankke/Firewatch.git
 cd Firewatch
 cp config.yaml.example config.yaml
 vim config.yaml
+python3 main.py
 ```
 
 Get your own Telegram API key from https://my.telegram.org/apps, fill them in `config.yaml`.
@@ -25,6 +26,6 @@ Start Firewatching.
 ## Usage
 
 ### dump
-`/firewatch dump @someone/or_it's_user_id @heipchat/or_it's_chat_id dest_chat_id`
+`/firewatch dump @heipchat/or_it's_chat_id @someone/or_it's_user_id dest_chat_id`
 
 ### TODO
